@@ -57,10 +57,6 @@ module.exports = {
     }),
     new ESLintPlugin({
       extensions: ["js", "jsx", "ts", "tsx"],
-      failOnError: false,
-      failOnWarning: false,
-      emitWarning: true,
-      // emitError: false,
     }),
     new CleanWebpackPlugin({
       protectWebpackAssets: false,
@@ -70,6 +66,7 @@ module.exports = {
 
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
+    modules: [path.resolve(__dirname, "src"), "node_modules"],
   },
 
   devtool: devtool,

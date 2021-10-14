@@ -1,10 +1,22 @@
-@use "variables";
-
-body {
-  background-color: variables.$bg;
-  font-size: 16px;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.main {
-  display: flex;
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
 }

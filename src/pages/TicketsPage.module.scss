@@ -1,0 +1,44 @@
+@use "src/styles/variables";
+@use "src/styles/global";
+
+.ticketPageWrap {
+  background-color: variables.$bg;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.ticketsPageHeader {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.ticketsPageContent {
+  display: grid;
+  margin-bottom: 40px;
+}
+
+.ticketsSort {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.transferFilter {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+
+.button {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 4;
+  grid-row-end: 4;
+}
