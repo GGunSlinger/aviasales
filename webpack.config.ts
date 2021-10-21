@@ -26,7 +26,8 @@ module.exports = {
 
   module: {
     rules: [
-      { test: /\.(png|jpe?g|gif|svg)$/i, type: "asset" },
+      { test: /\.(png|jpe?g|gif|svg)$/i, type: "asset/resource" },
+
       {
         test: /\.(js|ts|tsx)$/,
         exclude: /node_modules/,
@@ -45,6 +46,10 @@ module.exports = {
           "postcss-loader",
           "sass-loader",
         ],
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
       },
     ],
   },

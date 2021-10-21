@@ -1,10 +1,8 @@
 .ticketWrap {
-  margin-top: 20px;
-  margin-bottom: 20px;
   min-width: 500px;
   background-color: #fff;
-  height: 175px;
   padding: 20px;
+  font-weight: 500;
 }
 
 .ticketHeader {
@@ -14,6 +12,7 @@
   font-size: 34px;
   color: #2196f3;
   font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .content {
@@ -25,4 +24,9 @@
   display: flex;
   align-items: center;
   height: 50px;
+  font-size: 14px;
+}
+
+.ContentSectionHeader {
+  color: #a0b0b9;
 }

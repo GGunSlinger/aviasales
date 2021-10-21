@@ -1,41 +1,64 @@
 import { ticketsAPI } from "api/ticketsApi";
 import React, { useEffect, useState } from "react";
-import TicketsContent from "./TicketsContent";
+import TicketsContent from "./TicketsPageContent";
 import Styles from "./TicketsPage.module.scss";
 import { observer } from "mobx-react-lite";
-import { FilteredTickets, Tickets } from "store/store";
+import { FilteredTickets, Sorts, Tickets } from "store/store";
+import { Alert, CircularProgress, Snackbar } from "@mui/material";
+import { SORTING_TICKETS_BY_CHEAPEST } from "models/filter";
 
 const TicketsPage: React.FC = observer(() => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const fetchData = async () => {
-    try {
-      setLoading(true);
-      const { data } = await ticketsAPI.getSearchId();
-      const ticketsData = await ticketsAPI.getTickets(data.searchId);
+    const { data } = await ticketsAPI.getSearchId();
+    const resultTickets = [];
+    setLoading(true);
 
-      Tickets.push(...ticketsData.data.tickets);
-      FilteredTickets.push(...ticketsData.data.tickets);
-    } catch (e) {
-      console.error(e);
-      // TODO обработать ошибку
-    } finally {
-      setLoading(false);
+    while (true) {
+      try {
+        const {
+          data: { tickets, stop },
+        } = await ticketsAPI.getTickets(data.searchId);
+
+        resultTickets.push(...tickets);
+
+        if (stop) {
+          Tickets.push(...resultTickets);
+          FilteredTickets.push(...resultTickets);
+
+          Sorts.set(SORTING_TICKETS_BY_CHEAPEST);
+
+          break;
+        }
+      } catch (e) {
+        if (!error) setError(true);
+      }
     }
+
+    setLoading(false);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  if (loading) {
-    return <div>loading...</div>;
-  }
-
   return (
-    <div className={Styles.ticketPageWrap}>
-      <TicketsContent />
-    </div>
+    <>
+      <div className={Styles.ticketPageWrap}>
+        {loading ? <CircularProgress /> : <TicketsContent />}
+      </div>
+      <Snackbar
+        open={error}
+        autoHideDuration={6000}
+        onClose={() => setError(false)}
+      >
+        <Alert elevation={6} variant="filled" severity="error">
+          ошибка, часть данных не удалось загрузить
+        </Alert>
+      </Snackbar>
+    </>
   );
 });
 

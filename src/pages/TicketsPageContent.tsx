@@ -15,7 +15,7 @@ const TicketsContent: React.FC = observer(() => {
   return (
     <div>
       <div className={Styles.ticketsPageHeader}>
-        <img src={Logo} alt="" />
+        <img src={Logo} alt="Aviasales" />
       </div>
       <div>
         <div className={Styles.ticketsPageContent}>
@@ -35,14 +35,16 @@ const TicketsContent: React.FC = observer(() => {
                 )
             )}
           </div>
-          <Button
-            className={Styles.button}
-            variant="contained"
-            disableElevation
-            onClick={() => setTicketsCount(ticketsCount + pageToLoad)}
-          >
-            Показать еще 5 билетов!
-          </Button>
+          {ticketsCount < FilteredTickets.length && (
+            <Button
+              className={Styles.button}
+              variant="contained"
+              disableElevation
+              onClick={() => setTicketsCount(ticketsCount + pageToLoad)}
+            >
+              Показать еще 5 билетов!
+            </Button>
+          )}
         </div>
       </div>
     </div>

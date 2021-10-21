@@ -1,11 +1,11 @@
 @use "src/styles/variables";
-@use "src/styles/global";
 
 .ticketPageWrap {
   background-color: variables.$bg;
   min-height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .ticketsPageHeader {

@@ -1,9 +1,28 @@
 .wrap {
   width: 280px;
-  margin: 24px;
-  padding: 24px;
+  margin: 0 24px;
 }
 
 .formControl {
-  margin: 24px;
+  display: flex;
+  margin: 0 24px;
+}
+
+.checkboxGroup {
+  display: flex;
+}
+
+.checkboxGroup > * {
+  padding-left: 24px;
+  margin-right: 0 !important;
+}
+
+.checkboxGroup > *:hover {
+  background-color: #f1fcff;
+}
+
+.checkboxGroupHeader {
+  margin-left: 24px;
+  margin-bottom: 12px;
+  font-weight: 600;
 }
