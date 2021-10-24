@@ -12,13 +12,12 @@
   display: flex;
 }
 
-.checkboxGroup > * {
+.checkboxLabel {
   padding-left: 24px;
   margin-right: 0 !important;
-}
-
-.checkboxGroup > *:hover {
-  background-color: #f1fcff;
+  &:hover > {
+    background-color: #f1fcff;
+  }
 }
 
 .checkboxGroupHeader {

@@ -1,8 +1,8 @@
 import { Ticket } from "models/tickets";
-import moment from "moment";
 import React from "react";
 import {
   getCarrierImage,
+  getTimeHoursMinutes,
   minutesToHoursMinutes,
   pluralize,
 } from "utils/ticketUtils";
@@ -27,27 +27,27 @@ const TicketCard: React.FC<Props> = ({ ticket, index }) => {
       {ticket.segments.map((segment, index, array) => {
         return (
           <div key={index} className={Style.content}>
-            <div>
+            <div className={Style.contentItem}>
               <div>
-                <p className={Style.ContentSectionHeader}>
+                <p className={Style.contentSectionHeader}>
                   {array[0].origin} - {array[1].origin}
                 </p>
                 <p>
-                  {moment(array[0].date).format("h:mm")}
+                  {getTimeHoursMinutes(array[0].date)}
                   {" - "}
-                  {moment(array[1].date).format("h:mm")}
+                  {getTimeHoursMinutes(array[1].date)}
                 </p>
               </div>
             </div>
-            <div>
+            <div className={Style.contentItem}>
               <div>
-                <p className={Style.ContentSectionHeader}>в пути</p>
+                <p className={Style.contentSectionHeader}>в пути</p>
                 <p>{minutesToHoursMinutes(segment.duration)}</p>
               </div>
             </div>
-            <div>
+            <div className={Style.contentItem}>
               <div>
-                <p className={Style.ContentSectionHeader}>
+                <p className={Style.contentSectionHeader}>
                   {pluralize(segment.stops.length, [
                     "пересадка",
                     "пересадки",

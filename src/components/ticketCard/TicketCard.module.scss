@@ -20,13 +20,13 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.content > * {
+.contentItem {
   display: flex;
   align-items: center;
   height: 50px;
   font-size: 14px;
 }
 
-.ContentSectionHeader {
+.contentSectionHeader {
   color: #a0b0b9;
 }

@@ -3,7 +3,11 @@ export const getCarrierImage = (carrierCode: string): string => {
 };
 
 export const pluralize = (number: number, titles: string[]): string => {
-  const cases = [2, 0, 1, 1, 1, 2];
+  const single = 0;
+  const few = 1;
+  const other = 2;
+
+  const cases = [other, single, few, few, few, other];
   const title =
     titles[
       number % 100 > 4 && number % 100 < 20
@@ -23,4 +27,17 @@ export const minutesToHoursMinutes = (minutes: number): string => {
   }
 
   return `${minutes}м`;
+};
+
+export const getTimeHoursMinutes = (date: string): string => {
+  const time = new Date(date);
+
+  const minutes = time.getMinutes();
+  const hours = time.getHours();
+
+  if (+minutes < 10) {
+    return `${hours}:0${minutes}`;
+  }
+
+  return `${hours}:${minutes}`;
 };

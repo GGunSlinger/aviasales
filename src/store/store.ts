@@ -78,7 +78,6 @@ reaction(
 reaction(
   () => Sorts.get(),
   () => {
-    console.log("sort");
     sortingTickets(FilteredTickets, Sorts.get());
   }
 );
