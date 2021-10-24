@@ -3,6 +3,9 @@ export const getCarrierImage = (carrierCode: string): string => {
 };
 
 export const pluralize = (number: number, titles: string[]): string => {
+  // здесь значения массива лучше занести в константы, потому что
+  // когда другой разработчик будет смотреть код, то числа массива будут для него магическими
+  // и непонятными
   const cases = [2, 0, 1, 1, 1, 2];
   const title =
     titles[
