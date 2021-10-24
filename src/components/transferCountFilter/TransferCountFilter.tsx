@@ -28,6 +28,8 @@ const TransferCountFilter: React.FC = observer(() => {
         return Filter.replace(FILTER_TRANSFERS_ALL_OPTIONS);
       }
 
+      // магическое число 2
+      // если количество остановок будет больше, то тут придется вносить изменения
       const optionsLeftToCheckAll = 2;
       const isNeedCheckAll =
         FILTER_TRANSFERS_ALL_OPTIONS.length - optionsLeftToCheckAll ===
@@ -64,9 +66,12 @@ const TransferCountFilter: React.FC = observer(() => {
         >
           <p className={Style.checkboxGroupHeader}>Количество пересадок</p>
           <FormGroup className={Style.checkboxGroup}>
+            {/* компонент FormControlLabel повторяется. лучше сделать функцию
+            которая будет возвращать нужный результат */}
             <FormControlLabel
               control={
                 <Checkbox
+                  // отличное испльзование метода includes
                   checked={Filter.includes(FILTER_TRANSFERS_ALL)}
                   onChange={handleChange}
                   name={FILTER_TRANSFERS_ALL}

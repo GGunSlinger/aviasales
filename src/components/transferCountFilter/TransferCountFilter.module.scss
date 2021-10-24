@@ -12,11 +12,13 @@
   display: flex;
 }
 
+// * лучше не использовать
 .checkboxGroup > * {
   padding-left: 24px;
   margin-right: 0 !important;
 }
 
+// * лучше не использовать
 .checkboxGroup > *:hover {
   background-color: #f1fcff;
 }
